@@ -1,0 +1,38 @@
+package highLow;
+import java.util.Random;
+
+public class DeckOfCards {
+	private PlayingCard[] deck;
+    private int cardsRemaining;
+   
+    public DeckOfCards()
+    {
+            cardsRemaining = PlayingCard.SUITS * PlayingCard.TYPES;
+            deck = new PlayingCard[cardsRemaining];
+            for (int suitIndex = 0; (suitIndex < PlayingCard.SUITS); suitIndex++)
+            {
+                    for (int typeIndex = 0; (typeIndex < PlayingCard.TYPES); typeIndex++)
+                    {
+                            deck[suitIndex * PlayingCard.TYPES + typeIndex] = new PlayingCard(typeIndex, suitIndex);
+                    }
+            }
+    }
+   
+    public PlayingCard dealCard()
+    {
+    	deck.shuffle();
+
+    }
+   
+    public boolean cardsRemaining()
+    {
+            //your own code here, fool.
+    	return true;
+    }
+   
+    public void shuffle()
+    {
+            //your own code here fool.
+    }
+
+}

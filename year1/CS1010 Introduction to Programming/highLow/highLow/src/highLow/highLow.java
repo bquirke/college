@@ -1,0 +1,74 @@
+package highLow;
+import java.util.Scanner;
+
+import javax.swing.JOptionPane;
+
+
+
+public class highLow {
+
+	public static void main(String[] args) {
+		int success=0;
+		boolean hardluck = false;
+		PlayingCard card;// constructors
+		DeckOfCards deck = new DeckOfCards();
+		card = deck.dealCard(); // shuffle is called within deal card
+		
+		
+		//System.out.print((success < 4) + " " + deck.cardsRemainingFunc() + " " + !hardluck);
+		while((success < 4) && (deck.cardsRemainingFunc() == false) || !hardluck){
+		
+		String guess = JOptionPane.showInputDialog(null, "The card is " + card + ". Press 1 if lower, 2 if equal and 3 if higher.");
+		Scanner guessScanner = new Scanner( guess );
+		int optionGuessed = guessScanner.nextInt();
+		guessScanner.close();
+		
+		PlayingCard cardToGuess = deck.dealCard();
+		 if (optionGuessed == 1 && cardToGuess.lessThan(card) )
+		 {
+			 success++;
+			 JOptionPane.showMessageDialog(null, "Success! You have been succesfull "
+				 		+ success + " times in a row");
+			 card = cardToGuess; //old card becomes new card to judge off
+		 }
+		 else if (optionGuessed == 1 && cardToGuess.equal(card))
+		 {
+			 success++;
+			 JOptionPane.showMessageDialog(null, "Success! You have been succesfull "
+				 		+ success + " times in a row"); 
+			 card = cardToGuess;
+		 }
+		 else if (optionGuessed == 3 && cardToGuess.higherThan(card))
+		 {
+			 success++;
+			 JOptionPane.showMessageDialog(null, "Success! You have been succesfull "
+			 		+ success + " times in a row");
+			 card = cardToGuess;
+		 }
+		 else
+		 {
+			 JOptionPane.showMessageDialog(null, "Hardluck! The card was " + cardToGuess);
+			 hardluck = true;
+		 }
+		
+		} 
+		
+		if(hardluck){
+			JOptionPane.showMessageDialog(null, "Better luck next time");
+		}
+		
+		else{
+			JOptionPane.showMessageDialog(null, "Congratulations! You were succesfull for the "
+					+ "fourth time! Thus you win");
+		}
+		
+		
+		
+		
+		
+		
+		
+
+	}
+
+}
