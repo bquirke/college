@@ -1,0 +1,87 @@
+.names 4
+.proc Main
+.proc SumUp
+.const x
+.var 1 i
+Const 123
+StoG 2
+SumUp: Enter 1
+Const 0
+Sto 0 0
+L$0: Nop
+LoadG 3
+Const 0
+Gtr
+FJmp L$1
+Load 0 0
+LoadG 3
+Add
+Sto 0 0
+LoadG 3
+Const 1
+Sub
+StoG 3
+Jmp L$0
+L$1: Nop
+Load 0 0
+Write
+Leave
+Ret
+Main: Enter 7
+LoadG 4
+Write
+Const 1
+Sto 0 0
+Const 2
+Sto 0 1
+Const 3
+Sto 0 2
+Const 3
+Sto 0 3
+Const 20
+Sto 0 4
+Const 21
+Sto 0 5
+Const 22
+Sto 0 6
+Load 0 1
+Load 0 0
+EqGtr
+FJmp L$2
+Load 0 5
+Write
+Jmp L$3
+L$2: Nop
+L$3: Nop
+Load 0 0
+Load 0 1
+EqLss
+FJmp L$4
+Load 0 4
+Write
+Jmp L$5
+L$4: Nop
+L$5: Nop
+Load 0 0
+Load 0 2
+NtEqu
+FJmp L$6
+Load 0 6
+Write
+Jmp L$7
+L$6: Nop
+L$7: Nop
+Read
+StoG 3
+L$8: Nop
+LoadG 3
+Const 0
+Gtr
+FJmp L$9
+Call 1 SumUp
+Read
+StoG 3
+Jmp L$8
+L$9: Nop
+Leave
+Ret
